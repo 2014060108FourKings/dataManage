@@ -1,0 +1,103 @@
+{% extends "homePage/layout.html" %}
+
+{% block content %}
+    <hr />
+    <div class="well well-lg" style="width: 50%">
+        <strong>名称：</strong> {{ currentData.dataName }}<br/>
+        <strong>描述：</strong>
+        <div class="well well-sm" style="background-color: #bce8f1">
+             {{ currentData.dataDescription }}
+        </div>
+        <strong>作者：</strong>
+        {% if currentData.dataAuthor == None %}
+
+        {% else %}
+            {{ currentData.dataAuthor }}
+        {% endif %}
+        <br/>
+        <strong>出版社：</strong>
+        {% if currentData.dataPress == None %}
+
+        {% else %}
+            {{ currentData.dataPress }}
+        {% endif %}
+        <br/>
+        <strong>位置：</strong>
+        {% if currentData.dataLocation == None %}
+
+        {% else %}
+            {{ currentData.dataLocation }}
+        {% endif %}
+        <br/>
+        <strong>状态：</strong>
+        {% if currentData.borrowStatus == False %}
+            可借
+            {% if 'currentUserId'  in session and session['currentUserId'] != None  %}
+               <button class="btn btn-success" style="text-align:center;float: right"
+                       class="btn btn-primary btn-lg" data-toggle="modal" data-target="#borrowModal" id="borrowTip">借阅</button>
+                <div class="modal fade" id="borrowModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    <strong>{{ currentData.dataName }}</strong> -借阅
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/dataBorrow" name="dataBorrow" method="post">
+                                    <input type="hidden" name="borrowerId" value="{{ session['currentUserId'] }}">
+                                    <input type="hidden" name="dataId" value="{{ currentData.dataId }}">
+
+                                </form>
+                                <strong>借阅日期：</strong> {{ currentDate }} <br/>
+                                <strong>应还日期：</strong> {{ supposedReturnDate }} <br/>
+                                <hr/>
+                                 请确认您已经阅读了<a href="#"><strong>《资料管理系统用户公约》</strong></a>，并且我们默认您已经同意该公约
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="javascript:dataBorrow.submit();">
+                                    确认借阅
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+            {% else %}
+               <button class="btn btn-success" style="text-align:center;float: right" disabled = "disabled" id="borrowTip">如需借阅请登录</button>
+            {% endif %}
+        {% else %}
+            不可借
+
+            <button class="btn btn-danger" style="text-align:center;float: right" disabled = "disabled" id="borrowTip">图书已被借阅</button>
+            {% if 'currentUserId' in session and session['currentUserId'] == currentData.borrowerId %}
+                <form action="/dataRenew" name="renewForm" method="post">
+                    <input type="hidden" name="dataId" value="{{ currentData.dataId }}" >
+                </form>
+                <form action="/dataReturn" name="returnForm" method="post">
+                    <input type="hidden" name="dataId" value="{{ currentData.dataId }}" >
+                </form>
+                    <hr/>
+                    <div style="text-align:right">
+                        <button type="button" onclick="javascript:renewForm.submit();" class="btn btn-warning" >续借</button>
+                        <button type="button" onclick="javascript:returnForm.submit();" class="btn btn-success">资料归还</button>
+                    </div>
+                    <hr/>
+            {% endif %}
+        {% endif %}
+        <br/>
+        <strong>应还日期：</strong>
+        {% if currentData.supposedReturnTime == None %}
+
+        {% else %}
+            {{ currentData.supposedReturnTime }}
+        {% endif %}
+        <br/>
+
+
+    </div>
+{% endblock %}

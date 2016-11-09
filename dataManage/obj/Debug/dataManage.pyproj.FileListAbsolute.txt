@@ -1,0 +1,13 @@
+F:\vsProjects\dataManage\dataManage\bin\Microsoft.PythonTools.WebRole.dll
+F:\vsProjects\dataManage\dataManage\obj\Debug\attach_server.py
+F:\vsProjects\dataManage\dataManage\obj\Debug\visualstudio_py_debugger.py
+F:\vsProjects\dataManage\dataManage\obj\Debug\visualstudio_py_repl.py
+F:\vsProjects\dataManage\dataManage\obj\Debug\visualstudio_py_util.py
+F:\vsProjects\dataManage\dataManage\obj\Debug\__init__.py
+F:\vsProjects\dataManage\dataManage\obj\Debug\__main__.py
+F:\vsProjects\dataManage\dataManage\bin\AzureSetup.cfg
+F:\vsProjects\dataManage\dataManage\bin\Microsoft.PythonTools.AzureSetup.exe
+F:\vsProjects\dataManage\dataManage\bin\Microsoft.PythonTools.AzureSetup.exe.config
+F:\vsProjects\dataManage\dataManage\bin\wfastcgi.py
+F:\vsProjects\dataManage\dataManage\obj\Debug\web.config
+F:\vsProjects\dataManage\dataManage\obj\Debug\web.debug.config

@@ -1,0 +1,57 @@
+{% extends "homePage/layout.html" %}
+
+{% block content %}
+<script src="/static/scripts/dataPage/datasView.js"></script>
+    <hr/>
+            <!-- 这个地方，后面留着做搜索用。-->
+        <table>
+            <td><input type="text" class="form-control" id="dataSearch"></td>
+            <td><button onclick="dataSearch()"> 搜索</button></td>
+        </table>
+<hr/>
+    <table class="table table-striped">
+            <tbody >
+                <tr >
+                    <th style="background-color: #bce8f1"><label style="color: darkblue">名称</label></th>
+                    <th style="background-color: #bce8f1"><label>作者</label></th>
+                    <th style="background-color: #bce8f1"><label>位置</label></th>
+                    <th style="background-color: #bce8f1"><label>到期时间</label></th>
+                    <th style="background-color: #bce8f1"><label>出版社</label></th>
+                    <th style="background-color: #bce8f1"><label>状态</label></th>
+                </tr>
+            </tbody>
+            <tbody>
+                {% for data in datas %}
+                    <tr>
+
+                            <td><a href="/dataInfo/{{ data.dataId }}">{{ data.dataName }}</a></td>
+                            {% if data.dataAuthor == None %}
+                                <td></td>
+                                {% else %}
+                                <td>{{ data.dataAuthor }}</td>
+                            {% endif %}
+                            {% if data.dataLocation == None %}
+                                <td></td>
+                                {% else %}
+                                <td>{{ data.dataLocation }}</td>
+                            {% endif %}
+                            {% if data.supposedReturnTime == None %}
+                                <td></td>
+                                {% else %}
+                                <td>{{ data.supposedReturnTime }}</td>
+                            {% endif %}
+                            {% if data.dataPress == None %}
+                                <td></td>
+                                {% else %}
+                                <td>{{ data.dataPress }}</td>
+                            {% endif %}
+                            {% if data.borrowStatus == False %}
+                               <td> 可借</td>
+                            {% else %}
+                                 <td> 不可借</td>
+                            {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+{% endblock %}

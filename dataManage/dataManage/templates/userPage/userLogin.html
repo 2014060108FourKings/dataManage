@@ -1,0 +1,17 @@
+{% extends "homePage/layout.html" %}
+{% block content %}
+  <script src="/static/scripts/userPage/userLogin.js"></script>
+    <br/>
+    <form>
+        <table>
+        <tr><td>用户名：</td><td><input type="text" class="form-control" id="userName"/></td> </tr>
+        <tr><td>密码：</td><td><input type="password" class="form-control" id="password"/></td></tr>
+        </table>
+    </form>
+    <hr/>
+   <tr>
+               <td><button class="btn btn-warning" onclick="userLogin()">登录</button></td>
+               <td><a type="button" class="btn btn-warning"   href="/userRegister">注册</a></td>
+     &nbsp; &nbsp; &nbsp;  <td><label id="loginTips" style="color: red"></label></td>
+   </tr>
+{% endblock %}

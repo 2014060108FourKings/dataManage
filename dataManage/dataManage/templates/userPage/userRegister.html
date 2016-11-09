@@ -1,0 +1,16 @@
+{% extends "homePage/layout.html" %}
+{% block content %}
+  <script src="/static/scripts/userPage/userRegister.js"></script>
+    <br/>
+    <form>
+        <table>
+        <tr><td>用户名：</td><td><input type="text" class="form-control" id="userName"/></td> </tr>
+        <tr><td>密码：</td><td><input type="password" class="form-control" id="password"/></td></tr>
+        <tr><td>姓名：</td><td><input type="text" class="form-control" id="name"/></td></tr>
+        </table>
+    </form>
+   <tr>
+       <td><button class="btn btn-warning" onclick="userRegister()">注册</button></td>
+     &nbsp; &nbsp; &nbsp;  <td><label id="registerTips" style="color: red"></label></td>
+   </tr>
+{% endblock %}

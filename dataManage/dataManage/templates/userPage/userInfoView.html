@@ -1,0 +1,25 @@
+{% extends "homePage/layout.html" %}
+{% block content %}
+
+  <table class="table">
+	<caption>个人信息查看</caption>
+	<thead>
+		<tr>
+			<th>项目</th>
+			<th>属性</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="danger">
+			<td>用户名</td>
+			<td>{{ user.userName }}</td>
+
+		</tr>
+		<tr class="success">
+			<td>姓名</td>
+			<td>{{ user.name }}</td>
+		</tr>
+	</tbody>
+</table>
+{% endblock %}
