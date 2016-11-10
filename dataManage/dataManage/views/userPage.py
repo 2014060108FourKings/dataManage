@@ -1,7 +1,7 @@
 #coding: utf-8
 from flask import render_template,Blueprint,json,request,session
 from dataManage.dbConnect import db_session
-from dataManage.dbModels import *
+from dataManage.dbModels import user,data
 userPage = Blueprint('userPage',__name__)
 
 @userPage.route('/userLogin')
@@ -69,3 +69,16 @@ def reg():
         return  str(msg)
     else:
         return '哥们你又乱输网址。。。。。'
+@userPage.route('/myBorrows')
+def myBorrows():
+    if 'currentUserId' not in session or session['currentUserId'] == None:
+        return '<script>alert("非法操作");' \
+               'window.location = "/"' \
+               '</script>'
+    else:
+        datas = db_session.query(data).filter(data.borrowerId==session['currentUserId']).all()
+        return render_template(
+            'dataPage/datasView.html',
+            datas = datas,
+            title = '我的借阅'
+        )
