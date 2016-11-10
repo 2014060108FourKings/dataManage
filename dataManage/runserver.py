@@ -8,7 +8,7 @@ from os import environ
 from dataManage import app
 from dataManage.dbConnect import init_db
 from dataManage import models_import_admin
-#转换字符，确保中文参数可以传到前端页面,字符编码相关
+#转换字符，确保中文参数可以传到前端页面,字符编码相关，否则会有中文编码错误。
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
