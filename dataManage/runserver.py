@@ -4,16 +4,20 @@ This script runs the dataManage application using a development server.
 """
 
 
-from os import environ
+
 from dataManage import app
 from dataManage.dbConnect import init_db
 from dataManage import models_import_admin
+from flask_apscheduler import APScheduler
 #转换字符，确保中文参数可以传到前端页面,字符编码相关，否则会有中文编码错误。
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 if __name__ == '__main__':
+    scheduler = APScheduler()
+    scheduler.init_app(app)
+    scheduler.start()
     """
     init the database
     """
