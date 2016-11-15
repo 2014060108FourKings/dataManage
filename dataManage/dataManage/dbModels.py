@@ -1,3 +1,4 @@
+#coding: utf-8
 from sqlalchemy import Column, String,Integer,Date,Boolean,DateTime,Text,Float
 from dataManage.dbConnect import Base
 
@@ -61,13 +62,18 @@ class msgToUser(Base):
     __tablename__ = 'msgtouser'
 
     msgId = Column(Integer(),primary_key = True)
-    msgContent = Column(String(2000),nullable = True)
+    msgContent = Column(Text(),nullable = True)
     sendTime = Column(DateTime(),nullable = False)
     userId = Column(Integer(),nullable = False)
     readStatus = Column(Boolean(),nullable = False,default=False)
+    sender = Column(String(30),nullable = False,default = '系统')
+
     def __init__(self,msgContent = None,sendTime = None,
-                 userId = None,readStatus = False):
+                 userId = None,readStatus = False,
+                 sender = None
+                 ):
         self.msgContent = msgContent
         self.sendTime = sendTime
         self.userId = userId
         self.readStatus = readStatus
+        self.sender = sender
