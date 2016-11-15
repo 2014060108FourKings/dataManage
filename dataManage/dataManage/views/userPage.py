@@ -1,7 +1,7 @@
 #coding: utf-8
 from flask import render_template,Blueprint,json,request,session
 from dataManage.dbConnect import db_session
-from dataManage.dbModels import user,data
+from dataManage.dbModels import user,data,msgToUser
 userPage = Blueprint('userPage',__name__)
 
 @userPage.route('/userLogin')
@@ -82,3 +82,15 @@ def myBorrows():
             datas = datas,
             title = '我的借阅'
         )
+@userPage.route('/myMesseges')
+def myMesseges():
+    if 'currentUserId' not in session or session['currentUserId'] == None:
+        return '别乱点'
+    else:
+        selectedMsgs = db_session.query(msgToUser).filter(
+                    msgToUser.userId == session['currentUserId']
+                    ).all()
+        return render_template('userPage/myMesseges.html',
+                               selectedMsgs = selectedMsgs,
+                               title = '我的信息'
+                               )
