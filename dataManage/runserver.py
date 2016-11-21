@@ -16,7 +16,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 if __name__ == '__main__':
-    """暂时停用scheduler,出现点bug。没解决"""
+    """暂时停用scheduler,出现点bug。没解决，后面再说"""
     #scheduler = APScheduler()
     #scheduler.init_app(app)
     #scheduler.start()
