@@ -16,9 +16,10 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 if __name__ == '__main__':
-    scheduler = APScheduler()
-    scheduler.init_app(app)
-    scheduler.start()
+    """暂时停用scheduler,出现点bug。没解决"""
+    #scheduler = APScheduler()
+    #scheduler.init_app(app)
+    #scheduler.start()
     """
     init the database
     """
@@ -27,5 +28,5 @@ if __name__ == '__main__':
 
     #'thread' = True  多线程。 确保服务器在崩溃的时候有新线程产生，不会宕机
     app.run(debug = True,threaded=True)
-    logging.basicConfig()
+    #logging.basicConfig()
 

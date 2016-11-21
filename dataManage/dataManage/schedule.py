@@ -16,8 +16,8 @@ class Config(object):
 
     SCHEDULER_VIEWS_ENABLED = True
     SCHEDULER_EXECUTORS = {
-        'default': {'type': 'threadpool', 'max_workers': 20},
-        'processpool': {'type': 'processpool','max_workers': 5}
+        'default': {'type': 'threadpool', 'max_workers': 2},
+        'processpool': {'type': 'processpool','max_workers': 3}
 
     }
 
@@ -37,6 +37,7 @@ def sendMesseges():
             user.userId == selecteddata.borrowerId
         ).one().name
         new_msg = msgToUser(
+            '图书到期提醒',
             "您好， " + name +": \n 您借的资料《" + selecteddata.dataName + "》到期了，请及时归还"
                                                                        "\n （本消息由系统自动发送）",
             datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),

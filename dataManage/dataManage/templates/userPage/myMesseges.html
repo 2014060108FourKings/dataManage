@@ -1,6 +1,26 @@
 {% extends "homePage/layout.html" %}
 {% block content %}
-    {% for msg in selectedMsgs %}
-        序号：{{ msg.msgId }}       <br/>
+
+<table class="table table-striped">
+  <caption>
+      <strong>我的消息</strong>
+  </caption>
+  <thead>
+    <tr>
+      <th style="background-color: #bce8f1">标题</th>
+      <th style="background-color: #bce8f1">时间</th>
+      <th style="background-color: #bce8f1">发送人</th>
+    </tr>
+  </thead>
+  <tbody>
+        {% for msg in selectedMsgs %}
+        <tr>
+              <td>{{ msg.msgTitle }}</td>
+              <td>{{ msg.sendTime }}</td>
+              <td>{{ msg.sender }}</td>
+        </tr>
     {% endfor %}
+  </tbody>
+</table>
+
 {% endblock %}

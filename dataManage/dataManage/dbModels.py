@@ -62,16 +62,19 @@ class msgToUser(Base):
     __tablename__ = 'msgtouser'
 
     msgId = Column(Integer(),primary_key = True)
+    msgTitle = Column(String(30))
     msgContent = Column(Text(),nullable = True)
     sendTime = Column(DateTime(),nullable = False)
     userId = Column(Integer(),nullable = False)
     readStatus = Column(Boolean(),nullable = False,default=False)
     sender = Column(String(30),nullable = False,default = '系统')
 
-    def __init__(self,msgContent = None,sendTime = None,
+    def __init__(self,msgTitle = None,
+                 msgContent = None,sendTime = None,
                  userId = None,readStatus = False,
-                 sender = None
+                 sender = None,
                  ):
+        self.msgTitle = msgTitle
         self.msgContent = msgContent
         self.sendTime = sendTime
         self.userId = userId
