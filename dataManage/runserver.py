@@ -25,7 +25,6 @@ if __name__ == '__main__':
     """
     init_db()
     models_import_admin()
-
     #'thread' = True  多线程。 确保服务器在崩溃的时候有新线程产生，不会宕机
     app.run(debug = True,threaded=True)
     #logging.basicConfig()

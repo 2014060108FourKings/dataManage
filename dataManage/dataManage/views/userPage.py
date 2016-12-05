@@ -94,3 +94,15 @@ def myMesseges():
                                selectedMsgs = selectedMsgs,
                                title = '我的信息'
                                )
+@userPage.route('/messege/<messegeId>')
+def messege(messegeId):
+    selectedMsgs = db_session.query(msgToUser).filter(
+                    msgToUser.msgId == messegeId
+                    ).all()
+
+    if selectedMsgs == []:
+        return "<script>alert('没这个消息→_→别乱点');window.location='/'</script>"
+    elif selectedMsgs[0].userId != session['currentUserId'] or session['currentUserId'] == None:
+        return "<script>alert('这消息不是你的→_→别乱看');window.location='/'</script>"
+    else:
+        return render_template('userPage/messege.html',title = selectedMsgs[0].msgTitle,msg = selectedMsgs[0])

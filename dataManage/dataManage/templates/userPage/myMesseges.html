@@ -15,7 +15,7 @@
   <tbody>
         {% for msg in selectedMsgs %}
         <tr>
-              <td>{{ msg.msgTitle }}</td>
+              <td><a href="/messege/{{ msg.msgId }}">{{ msg.msgTitle }}</a></td>
               <td>{{ msg.sendTime }}</td>
               <td>{{ msg.sender }}</td>
         </tr>

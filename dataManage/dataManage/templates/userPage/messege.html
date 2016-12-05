@@ -1,0 +1,13 @@
+{% extends "homePage/layout.html" %}
+{% block content %}
+    <br/><br/>
+<div class="panel panel-info" style="width: 50%">
+    <div class="panel-heading" >
+        <h3 class="panel-title">{{ msg.msgTitle }}--------{{ msg.sendTime }}</h3>
+    </div>
+    <div class="panel-body">
+        {{ msg.msgContent }} <br/>
+        <div style="float: right;">来自-{{ msg.sender }}</div>
+    </div>
+</div>
+{% endblock %}
